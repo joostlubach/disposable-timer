@@ -1,2 +1,2 @@
 export { default } from './DisposableTimer'
-export { Config, configure } from './config'
+export { type Config, configure } from './config'

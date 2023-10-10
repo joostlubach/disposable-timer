@@ -60,6 +60,12 @@ export default class DisposableTimer {
     activeTimers.delete(this)
   }
 
+  public delay(ms: number) {
+    return new Promise<void>(resolve => {
+      this.setTimeout(resolve, ms)
+    })
+  }
+
   public removeIfInactive() {
     if (!this.isActive) {
       activeTimers.delete(this)

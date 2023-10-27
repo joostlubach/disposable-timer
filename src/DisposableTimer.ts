@@ -1,5 +1,3 @@
-import config from './config'
-
 export default class DisposableTimer {
 
   private timeouts: Set<NodeJS.Timer> = new Set()
@@ -35,6 +33,15 @@ export default class DisposableTimer {
     ACTIVE_TIMERS.add(this)
 
     return timeout
+  }
+
+  public defer(fn: () => any): NodeJS.Timeout | null {
+    return this.setTimeout(fn, 0)
+  }
+
+  public debounce(fn: () => any, ms: number = 100) {
+    this.clearAll()
+    return this.setTimeout(fn, ms)
   }
 
   /**

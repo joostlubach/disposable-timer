@@ -11,7 +11,6 @@ export interface Logger {
   error: (message: string, ...meta: any[]) => void
 }
 
-
 const config: Config = {
   logger: console,
 }

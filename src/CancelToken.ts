@@ -15,6 +15,8 @@ export default class CancelToken {
   }
 
   public await<T>(promise: PromiseLike<T> | T): Promise<T> {
+    // Disable lint because we catch errors and cannot easily rewrite using async/await.
+    // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
         const retval = await promise

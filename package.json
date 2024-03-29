@@ -5,11 +5,8 @@
   "author": "Joost Lubach",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm clean && pnpm build:esm && pnpm build:cjs",
-    "build:esm": "pnpm build:tsc:esm",
-    "build:tsc:esm": "tsc -p tsconfig.prod.json --module ESNext --outDir dist/esm",
-    "build:cjs": "pnpm build:tsc:cjs",
-    "build:tsc:cjs": "tsc -p tsconfig.prod.json --module CommonJS --outDir dist/cjs",
+    "build": "pnpm clean && pnpm build:tsc",
+    "build:tsc": "tsc -p tsconfig.prod.json",
     "clean": "rimraf dist",
     "lint": "eslint src --ext .ts",
     "check": "tsc -p . --noEmit",
@@ -17,17 +14,12 @@
   },
   "exports": {
     ".": {
-      "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
-      },
-      "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.js"
-      }
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   },
   "devDependencies": {
+    "@types/node": "^20.11.30",
     "copyfiles": "^2.4.1",
     "rimraf": "^5.0.1",
     "tsc-alias": "^1.8.7",

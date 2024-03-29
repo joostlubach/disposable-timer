@@ -1,6 +1,6 @@
 export default class DisposableTimer {
 
-  private timeouts: Set<NodeJS.Timer> = new Set()
+  private timeouts: Set<NodeJS.Timeout> = new Set()
   private disposed = false
 
   /**

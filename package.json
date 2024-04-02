@@ -4,6 +4,7 @@
   "description": "Timer that can globally be disposed.",
   "author": "Joost Lubach",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "pnpm clean && pnpm build:tsc",
     "build:tsc": "tsc -p tsconfig.prod.json",

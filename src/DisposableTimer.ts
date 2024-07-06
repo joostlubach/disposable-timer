@@ -1,6 +1,6 @@
 export default class DisposableTimer {
 
-  private timeouts: Set<NodeJS.Timeout> = new Set()
+  private timeouts: Set<TimerHandle> = new Set()
   private disposed = false
 
   /**
@@ -20,7 +20,7 @@ export default class DisposableTimer {
   /**
    * Wrapper around global setTimeout().
    */
-  public setTimeout(fn: () => any, ms: number): NodeJS.Timeout | null {
+  public setTimeout(fn: () => any, ms: number): TimerHandle | null {
     if (this.disposed) { return null }
 
     const timeout = setTimeout(async () => {
@@ -35,7 +35,7 @@ export default class DisposableTimer {
     return timeout
   }
 
-  public defer(fn: () => any): NodeJS.Timeout | null {
+  public defer(fn: () => any): TimerHandle | null {
     return this.setTimeout(fn, 0)
   }
 
@@ -47,7 +47,7 @@ export default class DisposableTimer {
   /**
    * Wrapper around global clearTimeout().
    */
-  public clearTimeout(timeout: NodeJS.Timeout) {
+  public clearTimeout(timeout: TimerHandle) {
     clearTimeout(timeout)
     this.timeouts.delete(timeout)
     this.removeIfInactive()
@@ -105,5 +105,7 @@ export default class DisposableTimer {
   // #endregion
 
 }
+
+type TimerHandle = ReturnType<typeof setTimeout>
 
 const ACTIVE_TIMERS: Set<DisposableTimer> = new Set()

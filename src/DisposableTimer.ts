@@ -106,6 +106,6 @@ export default class DisposableTimer {
 
 }
 
-type TimerHandle = ReturnType<typeof setTimeout>
+export type TimerHandle = ReturnType<typeof setTimeout>
 
 const ACTIVE_TIMERS: Set<DisposableTimer> = new Set()

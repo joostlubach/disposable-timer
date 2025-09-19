@@ -21,7 +21,7 @@
     "js-yaml": "^4.1.0",
     "rimraf": "^5.0.5",
     "tsc-alias": "^1.8.8",
-    "typescript": "^5.9.2"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "lodash": "^4.17.21"

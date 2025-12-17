@@ -20,7 +20,7 @@ export default class DisposableTimer {
   /**
    * Wrapper around global setTimeout().
    */
-  public setTimeout(fn: () => any, ms: number): TimerHandle | null {
+  public setTimeout(fn: () => void, ms: number): TimerHandle | null {
     if (this.disposed) { return null }
 
     const timeout = setTimeout(async () => {
@@ -35,11 +35,11 @@ export default class DisposableTimer {
     return timeout
   }
 
-  public defer(fn: () => any): TimerHandle | null {
+  public defer(fn: () => void): TimerHandle | null {
     return this.setTimeout(fn, 0)
   }
 
-  public debounce(fn: () => any, ms: number = 100) {
+  public debounce(fn: () => void, ms: number = 100) {
     this.clearAll()
     return this.setTimeout(fn, ms)
   }

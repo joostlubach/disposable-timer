@@ -1,5 +1,5 @@
 const FS = require('fs')
-const YAML = require('js-yaml')
+const yaml = require('yaml')
 
 module.exports = [
   // Global ignores (applies to all configs)
@@ -39,6 +39,6 @@ module.exports = [
       '@mosdev': require('@mosdev/eslint-plugin')
     },
 
-    rules: YAML.load(FS.readFileSync('../../eslint.rules.yml'))
+    rules: yaml.parse(FS.readFileSync('../../eslint.rules.yml', 'utf-8'))
   }
 ]

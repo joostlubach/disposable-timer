@@ -19,10 +19,9 @@
     "clean": "rimraf dist",
     "check": "tsc -p . --noEmit",
     "lint": "eslint",
-    "test": "NODE_ENV=test jest"
+    "test": "vitest run"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
     "@types/lodash": "^4.17.20",
     "@types/node": "^24.5.2",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
@@ -34,11 +33,10 @@
     "globals": "^16.4.0",
     "yaml": "^2.8.2",
     "rimraf": "^6.0.1",
-    "ts-jest": "^29.1.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^4.0.0"
   },
   "dependencies": {
-    "jest": "^30.2.0",
     "lodash": "^4.17.21"
   }
 }
